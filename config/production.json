@@ -1,0 +1,40 @@
+{
+  "environment": "production",
+  "debug": false,
+  "sourceMap": false,
+  "optimization": true,
+  "linting": {
+    "enabled": true,
+    "maxWarnings": 0,
+    "fix": false
+  },
+  "testing": {
+    "enabled": true,
+    "coverage": {
+      "enabled": true,
+      "threshold": 80
+    }
+  },
+  "typescript": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": false,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES2020"]
+  },
+  "output": {
+    "directory": "./build",
+    "format": "commonjs",
+    "minify": true
+  },
+  "build": {
+    "incremental": false,
+    "parallel": true,
+    "cache": false
+  }
+}

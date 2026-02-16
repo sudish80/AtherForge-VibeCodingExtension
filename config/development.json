@@ -1,0 +1,37 @@
+{
+  "environment": "development",
+  "debug": true,
+  "sourceMap": true,
+  "optimization": false,
+  "linting": {
+    "enabled": true,
+    "maxWarnings": -1,
+    "fix": true
+  },
+  "testing": {
+    "enabled": true,
+    "coverage": {
+      "enabled": true,
+      "threshold": 70
+    }
+  },
+  "typescript": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "output": {
+    "directory": "./out",
+    "format": "commonjs"
+  },
+  "build": {
+    "incremental": true,
+    "parallel": true
+  }
+}

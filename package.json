@@ -1,0 +1,299 @@
+{
+  "name": "atherforge",
+  "displayName": "Atherforge",
+  "description": "Multi-model vibe coding assistant - Full Access Autonomous AI",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other",
+    "AI",
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:atherforge.sidebar",
+    "onCommand:atherforge.openSidebar",
+    "onCommand:atherforge.generateCode",
+    "onCommand:atherforge.runPipeline",
+    "onCommand:atherforge.autoPilot"
+  ],
+  "main": "./out/extension.js",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true,
+      "description": "Atherforge needs full workspace access to read and write files autonomously."
+    },
+    "workspaceTrust": true
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "atherforge.openSidebar",
+        "title": "Atherforge: Open"
+      },
+      {
+        "command": "atherforge.newChat",
+        "title": "Atherforge: New Chat"
+      },
+      {
+        "command": "atherforge.generateCode",
+        "title": "Atherforge: Generate Code",
+        "category": "Atherforge"
+      },
+      {
+        "command": "atherforge.runPipeline",
+        "title": "Atherforge: Run Pipeline",
+        "category": "Atherforge"
+      },
+      {
+        "command": "atherforge.autoPilot",
+        "title": "Atherforge: Auto Pilot",
+        "category": "Atherforge"
+      },
+      {
+        "command": "atherforge.stopAll",
+        "title": "Atherforge: Stop All",
+        "category": "Atherforge"
+      },
+      {
+        "command": "atherforge.generateFeaturesCSV",
+        "title": "Atherforge: Generate Features CSV",
+        "category": "Atherforge"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "atherforge.generateCode",
+          "when": "editorHasSelection",
+          "group": "atherforge"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "atherforge.generateCode",
+          "group": "atherforge"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "atherforge.openSidebar",
+          "when": "true"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "atherforge",
+          "title": "Atherforge",
+          "icon": "media/atherforge.svg"
+        }
+      ]
+    },
+    "views": {
+      "atherforge": [
+        {
+          "id": "atherforge.sidebar",
+          "name": "Atherforge",
+          "type": "webview"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Atherforge",
+      "properties": {
+        "atherforge.models.codeLlama.baseUrl": {
+          "type": "string",
+          "default": "https://api.openrouter.ai/v1/code-llama-all",
+          "description": "Code Llama - Frontend Coding API base URL."
+        },
+        "atherforge.models.codeLlama.apiKeys": {
+          "type": "array",
+          "default": [],
+          "description": "Array of Code Llama API keys.",
+          "items": { "type": "string" }
+        },
+        "atherforge.models.codeLlama.apiKeyHeader": {
+          "type": "string",
+          "default": "Authorization",
+          "description": "Header name used to send the API key."
+        },
+        "atherforge.models.codeLlama.model": {
+          "type": "string",
+          "default": "",
+          "description": "Code Llama model name or id."
+        },
+        "atherforge.models.starcoder2.baseUrl": {
+          "type": "string",
+          "default": "https://api-inference.huggingface.co/models/bigcode/starcoder",
+          "description": "StarCoder2 - Frontend Coding API base URL."
+        },
+        "atherforge.models.starcoder2.apiKeys": {
+          "type": "array",
+          "default": [],
+          "description": "Array of StarCoder2 API keys.",
+          "items": { "type": "string" }
+        },
+        "atherforge.models.starcoder2.apiKeyHeader": {
+          "type": "string",
+          "default": "Authorization",
+          "description": "Header name used to send the API key."
+        },
+        "atherforge.models.qwen2_5Coder.baseUrl": {
+          "type": "string",
+          "default": "https://api.openrouter.ai/v1/qwen2.5-coder",
+          "description": "Qwen2.5-Coder - Frontend Coding API base URL."
+        },
+        "atherforge.models.qwen2_5Coder.apiKeys": {
+          "type": "array",
+          "default": [],
+          "description": "Array of Qwen2.5-Coder API keys.",
+          "items": { "type": "string" }
+        },
+        "atherforge.models.qwen2_5Coder.apiKeyHeader": {
+          "type": "string",
+          "default": "Authorization",
+          "description": "Header name used to send the API key."
+        },
+        "atherforge.models.claude35.baseUrl": {
+          "type": "string",
+          "default": "https://api.anthropic.com/v1/complete",
+          "description": "Claude 3.5 - Backend Coding API base URL."
+        },
+        "atherforge.models.claude35.apiKeys": {
+          "type": "array",
+          "default": [],
+          "description": "Array of Claude 3.5 API keys.",
+          "items": { "type": "string" }
+        },
+        "atherforge.models.claude35.apiKeyHeader": {
+          "type": "string",
+          "default": "x-api-key",
+          "description": "Header name used to send the API key."
+        },
+        "atherforge.models.deepseekCoder.baseUrl": {
+          "type": "string",
+          "default": "https://api.openrouter.ai/v1/deepseek-coder",
+          "description": "DeepSeek Coder - Backend Coding API base URL."
+        },
+        "atherforge.models.deepseekCoder.apiKeys": {
+          "type": "array",
+          "default": [],
+          "description": "Array of DeepSeek Coder API keys.",
+          "items": { "type": "string" }
+        },
+        "atherforge.models.deepseekCoder.apiKeyHeader": {
+          "type": "string",
+          "default": "Authorization",
+          "description": "Header name used to send the API key."
+        },
+        "atherforge.models.llama3_32k.baseUrl": {
+          "type": "string",
+          "default": "https://api.openrouter.ai/v1/llama3-32k",
+          "description": "LLaMA 3 32K - Reasoning API base URL."
+        },
+        "atherforge.models.llama3_32k.apiKeys": {
+          "type": "array",
+          "default": [],
+          "description": "Array of LLaMA 3 32K API keys.",
+          "items": { "type": "string" }
+        },
+        "atherforge.models.llama3_32k.apiKeyHeader": {
+          "type": "string",
+          "default": "Authorization",
+          "description": "Header name used to send the API key."
+        },
+        "atherforge.models.gemini1_5.baseUrl": {
+          "type": "string",
+          "default": "https://generativelanguage.googleapis.com/v1beta",
+          "description": "Gemini 1.5 - Reasoning API base URL."
+        },
+        "atherforge.models.gemini1_5.apiKeys": {
+          "type": "array",
+          "default": [],
+          "description": "Array of Gemini 1.5 API keys.",
+          "items": { "type": "string" }
+        },
+        "atherforge.models.gemini1_5.apiKeyHeader": {
+          "type": "string",
+          "default": "Authorization",
+          "description": "Header name used to send the API key."
+        },
+        "atherforge.models.phi3Medium.baseUrl": {
+          "type": "string",
+          "default": "https://api.phi-3.com/v1/completions",
+          "description": "Phi-3 Medium - Reasoning API base URL."
+        },
+        "atherforge.models.phi3Medium.apiKeys": {
+          "type": "array",
+          "default": [],
+          "description": "Array of Phi-3 Medium API keys.",
+          "items": { "type": "string" }
+        },
+        "atherforge.models.phi3Medium.apiKeyHeader": {
+          "type": "string",
+          "default": "Authorization",
+          "description": "Header name used to send the API key."
+        },
+        "atherforge.models.codeLlamaInstruct.baseUrl": {
+          "type": "string",
+          "default": "https://api.openrouter.ai/v1/code-llama-instruct",
+          "description": "Code Llama Instruct - Error Handling/Debugging API base URL."
+        },
+        "atherforge.models.codeLlamaInstruct.apiKeys": {
+          "type": "array",
+          "default": [],
+          "description": "Array of Code Llama Instruct API keys.",
+          "items": { "type": "string" }
+        },
+        "atherforge.models.codeLlamaInstruct.apiKeyHeader": {
+          "type": "string",
+          "default": "Authorization",
+          "description": "Header name used to send the API key."
+        },
+        "atherforge.github.apiBaseUrl": {
+          "type": "string",
+          "default": "https://api.github.com",
+          "description": "GitHub API base URL."
+        },
+        "atherforge.github.token": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub personal access token."
+        },
+        "atherforge.fullAccess": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable full access mode for maximum capabilities."
+        },
+        "atherforge.autoMode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable autonomous mode without human intervention."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "format": "eslint src --fix",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.54.0",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}

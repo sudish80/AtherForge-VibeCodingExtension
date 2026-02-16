@@ -1,0 +1,42 @@
+{
+  "project": {
+    "name": "atherforge",
+    "version": "0.0.1",
+    "description": "Multi-model vibe coding assistant"
+  },
+  "build": {
+    "typescript": {
+      "configFile": "./tsconfig.json",
+      "incremental": true,
+      "diagnostics": true
+    },
+    "linting": {
+      "configFile": "./eslint.config.mjs",
+      "format": "stylish"
+    },
+    "testing": {
+      "enabled": true,
+      "framework": "vscode-test"
+    }
+  },
+  "paths": {
+    "source": "./src",
+    "output": "./out",
+    "build": "./build",
+    "tests": "./src/**/*.test.ts",
+    "config": "./config",
+    "scripts": "./scripts"
+  },
+  "environment": {
+    "variables": {
+      "NODE_ENV": "${MODE}",
+      "DEBUG": "${DEBUG_MODE}",
+      "VSCode_API": "1.109.0"
+    }
+  },
+  "execution": {
+    "timeout": 300000,
+    "parallel": true,
+    "maxWorkers": "auto"
+  }
+}
