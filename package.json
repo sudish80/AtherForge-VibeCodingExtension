@@ -3,6 +3,7 @@
   "displayName": "Atherforge",
   "description": "Multi-model vibe coding assistant - Full Access Autonomous AI",
   "version": "0.0.1",
+  "icon": "media/atherforge_icon.png",
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -89,7 +90,7 @@
         {
           "id": "atherforge",
           "title": "Atherforge",
-          "icon": "media/atherforge.svg"
+          "icon": "media/atherforge_icon.png"
         }
       ]
     },
